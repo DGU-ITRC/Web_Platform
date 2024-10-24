@@ -1,12 +1,15 @@
 // 라이브러리
 import { useState } from "react";
 import {
-    LineChart,
-    Line,
-    CartesianGrid,
+    BarChart,
+    Bar,
+    Cell,
     XAxis,
     YAxis,
+    CartesianGrid,
     Tooltip,
+    Legend,
+    ReferenceLine,
 } from "recharts";
 // 서비스
 // 컴포넌트
@@ -16,30 +19,30 @@ import { Server } from "lucide-react";
 import "./style.css";
 
 const data = [
-    { name: "00:00", online: 2, offline: 4 },
-    { name: "01:00", online: 3, offline: 3 },
-    { name: "02:00", online: 1, offline: 5 },
-    { name: "03:00", online: 4, offline: 2 },
-    { name: "04:00", online: 5, offline: 1 },
-    { name: "05:00", online: 2, offline: 4 },
-    { name: "06:00", online: 3, offline: 3 },
-    { name: "07:00", online: 1, offline: 5 },
-    { name: "08:00", online: 4, offline: 2 },
-    { name: "09:00", online: 5, offline: 1 },
-    { name: "10:00", online: 2, offline: 4 },
-    { name: "11:00", online: 3, offline: 3 },
-    { name: "12:00", online: 1, offline: 5 },
-    { name: "13:00", online: 4, offline: 2 },
-    { name: "14:00", online: 5, offline: 1 },
-    { name: "15:00", online: 2, offline: 4 },
-    { name: "16:00", online: 3, offline: 3 },
-    { name: "17:00", online: 3, offline: 3 },
-    { name: "18:00", online: 4, offline: 2 },
-    { name: "19:00", online: 5, offline: 1 },
-    { name: "20:00", online: 4, offline: 2 },
-    { name: "21:00", online: 4, offline: 2 },
-    { name: "22:00", online: 5, offline: 1 },
-    { name: "23:00", online: 6, offline: 0 },
+    { time: "00:00", online: 2, offline: 4 },
+    { time: "01:00", online: 3, offline: 3 },
+    { time: "02:00", online: 1, offline: 5 },
+    { time: "03:00", online: 4, offline: 2 },
+    { time: "04:00", online: 5, offline: 1 },
+    { time: "05:00", online: 2, offline: 4 },
+    { time: "06:00", online: 3, offline: 3 },
+    { time: "07:00", online: 1, offline: 5 },
+    { time: "08:00", online: 4, offline: 2 },
+    { time: "09:00", online: 5, offline: 1 },
+    { time: "10:00", online: 2, offline: 4 },
+    { time: "11:00", online: 3, offline: 3 },
+    { time: "12:00", online: 1, offline: 5 },
+    { time: "13:00", online: 4, offline: 2 },
+    { time: "14:00", online: 5, offline: 1 },
+    { time: "15:00", online: 2, offline: 4 },
+    { time: "16:00", online: 3, offline: 3 },
+    { time: "17:00", online: 3, offline: 3 },
+    { time: "18:00", online: 4, offline: 2 },
+    { time: "19:00", online: 5, offline: 1 },
+    { time: "20:00", online: 4, offline: 2 },
+    { time: "21:00", online: 4, offline: 2 },
+    { time: "22:00", online: 5, offline: 1 },
+    { time: "23:00", online: 6, offline: 0 },
 ];
 
 const ServerPage = () => {
@@ -92,27 +95,26 @@ const ServerPage = () => {
                 </div>
                 <div className="section">
                     <h3>실시간 서버 상태</h3>
-                    <LineChart
+                    <BarChart
                         width={1280}
                         height={300}
                         data={data}
-                        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+                        margin={{
+                            top: 5,
+                            right: 30,
+                            left: 20,
+                            bottom: 5,
+                        }}
                     >
-                        <Line
-                            type="monotone"
-                            dataKey="online"
-                            stroke="#0fa11b"
-                        />
-                        <Line
-                            type="monotone"
-                            dataKey="offline"
-                            stroke="#db2121"
-                        />
-                        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="time" />
+                        <YAxis max={6} />
                         <Tooltip />
-                    </LineChart>
+                        <Legend />
+                        <ReferenceLine y={0} stroke="#000" />
+                        <Bar dataKey="online" stackId="a" fill="#ff7a00" />
+                        <Bar dataKey="offline" stackId="a" fill="#ff7b0066" />
+                    </BarChart>
                 </div>
             </div>
         </div>

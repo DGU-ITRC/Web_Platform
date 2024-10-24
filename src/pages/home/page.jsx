@@ -196,8 +196,7 @@ const HomePage = () => {
                 <div
                     className="bentoItem dark server"
                     onClick={() => {
-                        // TBD : navigate to server state page
-                        navigate("/");
+                        navigate("/server");
                     }}
                 >
                     <img className="icon" src={ServerBg} alt="" srcset="" />
