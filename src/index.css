@@ -13,6 +13,7 @@
         --dimmed: #00000066;
         /* 색상 */
         --col-header: #ffffff77;
+        --col-sub-header: #ededed;
         --col-0: #ffffff;
         --col-1: #f9f9f9;
         --col-2: #dcdcdc;
@@ -63,6 +64,7 @@
         --dimmed: #00000066;
         /* 색상 */
         --col-header: #00000077;
+        --col-sub-header: #121212;
         --col-0: #131212;
         --col-1: #313030;
         --col-2: #4d4c4c;

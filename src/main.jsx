@@ -12,6 +12,7 @@ import StoryPage from "./pages/story/page";
 import TechAndServicePage from "./pages/techandservice/page";
 import NewsPage from "./pages/news/page";
 import CommunicationPage from "./pages/communication/page";
+import ServerPage from "./pages/server/page";
 // 스타일
 import "./index.css";
 
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/server",
-                element: <CommunicationPage />,
+                element: <ServerPage />,
             },
         ],
     },

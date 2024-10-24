@@ -1,0 +1,46 @@
+#ServerPage {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: var(--max-width);
+}
+
+#ServerPage > .article {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#ServerPage .tabWrap {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid var(--col-2);
+}
+
+#ServerPage .tabWrap > .tab {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem 0.375rem 0.75rem;
+    border-bottom: 0.125rem solid transparent;
+    font-size: 1rem;
+    font-weight: var(--font-weight-regular);
+    color: var(--col-6);
+    transition: 0.3s;
+}
+
+#ServerPage .tabWrap > .tab:hover {
+    color: var(--col-8);
+}
+
+#ServerPage .tabWrap > .tab.active {
+    border-bottom: 0.125rem solid var(--col-8);
+    font-weight: var(--font-weight-medium);
+    color: var(--col-8);
+}
+
+#ServerPage .tabWrap > .tab.active svg {
+    stroke-width: 2.5px;
+}
