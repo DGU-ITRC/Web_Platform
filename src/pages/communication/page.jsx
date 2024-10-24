@@ -9,7 +9,7 @@ const CommunicationPage = () => {
     return (
         <div id="CommunicationPage" className="page">
             <div className="pageInfo">
-                <div className="pageName">뉴스</div>
+                <div className="pageName">소통</div>
                 <div className="pageSlogan">
                     <p>동국대학교 연구진과</p>
                     <p>소통해보세요.</p>

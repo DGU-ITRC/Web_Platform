@@ -6,6 +6,18 @@
     max-width: var(--max-width);
 }
 
+#StoryPage > .imageBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100svw;
+    height: 100svh;
+    object-fit: cover;
+    filter: blur(0.5rem) grayscale(1);
+    opacity: 0.05;
+    transition: 1s;
+}
+
 #StoryPage > .historyContainer {
     position: relative;
     padding-bottom: 12rem;
@@ -213,7 +225,8 @@
     > .contentWrap
     > .imageWrap:hover
     > img {
-    opacity: 0.5;
+    opacity: 0.25;
+    filter: brightness(0.75);
     scale: 1;
     z-index: 1;
 }
@@ -229,6 +242,7 @@
     border: 1px solid transparent;
     border-radius: 0.25rem;
     opacity: 1;
-    scale: 2.5;
+    filter: brightness(1);
+    scale: 2;
     z-index: 2;
 }

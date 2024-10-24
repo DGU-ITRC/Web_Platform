@@ -3,15 +3,17 @@
 // 컴포넌트
 // 아이콘
 // 데이터
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { storyData } from "./data.js";
 // 스타일
 import "./style.css";
 
 const StoryPage = () => {
     const [data, setData] = useState(storyData);
+    const [background, setBackground] = useState(null);
     return (
         <div id="StoryPage" className="page">
+            <img className="imageBackground" src={background} />
             <div className="pageInfo">
                 <div className="pageName">이야기</div>
                 <div className="pageSlogan">
@@ -29,6 +31,9 @@ const StoryPage = () => {
                             month={story.month}
                             title={story.title}
                             images={story.images}
+                            setImage={(img) => {
+                                setBackground(img);
+                            }}
                         />
                     ))}
                 </div>
@@ -37,7 +42,14 @@ const StoryPage = () => {
     );
 };
 
-const StoryItem = ({ side, year, month, title, images = [] }) => {
+const StoryItem = ({
+    side,
+    year,
+    month,
+    title,
+    images = [],
+    setImage = () => {},
+}) => {
     return (
         <div className={`storyItem ${side}`}>
             <div className="storyWrap">
@@ -55,6 +67,12 @@ const StoryItem = ({ side, year, month, title, images = [] }) => {
                                 src={image}
                                 loading="lazy"
                                 alt=""
+                                onMouseEnter={() => {
+                                    setImage(image);
+                                }}
+                                onMouseLeave={() => {
+                                    setImage(null);
+                                }}
                             />
                         ))}
                     </div>

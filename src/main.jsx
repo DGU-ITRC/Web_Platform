@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // 서비스
 // 레이아웃
 import RootLayout from "./layouts/rootLayout/layout";
+import SubLayout from "./layouts/subLayout/layout";
 // 페이지
 import HomePage from "./pages/home/page";
 import IntroductionPage from "./pages/introduction/page";
@@ -40,6 +41,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "/communication",
+                element: <CommunicationPage />,
+            },
+        ],
+    },
+    {
+        element: <SubLayout />,
+        children: [
+            {
+                path: "/server",
                 element: <CommunicationPage />,
             },
         ],

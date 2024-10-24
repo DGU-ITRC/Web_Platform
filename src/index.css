@@ -178,6 +178,8 @@ body {
     font-size: 1rem;
     font-weight: 700;
     color: var(--col-8);
+    padding-bottom: 0.25rem;
+    border-bottom: 0.125rem solid var(--col-orange);
 }
 
 .pageInfo > .pageSlogan {
@@ -306,4 +308,21 @@ body {
     background-color: var(--col-0);
     color: var(--col-9);
     scale: 0.975;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: var(--max-width);
+    animation: pageFadeIn 1s;
+}
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
