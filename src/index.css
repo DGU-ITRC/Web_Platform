@@ -53,6 +53,55 @@
         --shadow: 0 0 0.75rem 0 #eeeeee;
         --shadow-active: 0 0.25rem 1rem 0 #dfdfdf;
     }
+    .dark {
+        /* 전역 변수 */
+        --background: #191817;
+        --forground: #ffffff;
+        --max-width: 80rem;
+        --radius: 1rem;
+        --dimmed: #00000066;
+        /* 색상 */
+        --col-header: #00000077;
+        --col-0: #131212;
+        --col-1: #313030;
+        --col-2: #4d4c4c;
+        --col-3: #686868;
+        --col-4: #858585;
+        --col-5: #a2a2a2;
+        --col-6: #c0c0c0;
+        --col-7: #dcdcdc;
+        --col-8: #f9f9f9;
+        --col-9: #ffffff;
+        --col-orange: #ff7a00;
+        --col-orange-0: #ff7b0000;
+        --col-orange-1: #ff7b0066;
+        --col-orange-2: #ff7b0010;
+        /* 택스트 굵기 */
+        --font-weight-thin: 150;
+        --font-weight-extralight: 250;
+        --font-weight-light: 350;
+        --font-weight-reguler: 450;
+        --font-weight-medium: 550;
+        --font-weight-semibold: 650;
+        --font-weight-bold: 750;
+        --font-weight-extrabold: 850;
+        --font-weight-black: 900;
+        /* 그리드 */
+        --grid-gutter: 1.25rem;
+        /* 카드 색상 */
+        --card-text: #eceded;
+        --card-background: #21201f;
+        --card-background-inverse: #6e4b27;
+        --card-stroke: #615448;
+        --card-radius: 1rem;
+        /* 푸터 색상 */
+        --footer-text: #9d9d9d;
+        --footer-foreground: #232323;
+        --footer-background: #15151a;
+        /* 그림자 */
+        --shadow: 0 0 0.75rem 0 #111111;
+        --shadow-active: 0 0.25rem 1rem 0 #202020;
+    }
 }
 
 @layer base {
@@ -62,6 +111,32 @@
     body {
         @apply bg-background text-foreground;
     }
+}
+
+@font-face {
+    font-family: "Wanted Sans Variable";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400 1000;
+    src: url("./assets/fonts/WantedSansVariable.woff2")
+        format("woff2-variations");
+}
+
+@font-face {
+    font-family: "Pretendard Variable";
+    font-weight: 45 920;
+    font-style: normal;
+    font-display: swap;
+    src: url("./woff2/PretendardVariable.woff2") format("woff2-variations");
+}
+
+* {
+    font-family: "Pretendard Variable" !important;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body {
+    background-color: var(--background);
 }
 
 .gridPage {
@@ -196,8 +271,6 @@
 }
 
 .article table tr td {
-    display: flex;
-    flex-direction: column;
     color: var(--col-8);
     padding: 1rem;
 }
@@ -206,6 +279,7 @@
     padding: 1.5rem 2rem;
     background-color: var(--card-background);
     border: 1px solid var(--card-stroke);
+    color: var(--col-9);
     font-size: 1.125rem;
     font-weight: var(--font-weight-medium);
 }

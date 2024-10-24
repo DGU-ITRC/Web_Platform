@@ -13,7 +13,6 @@ import NewsPage from "./pages/news/page";
 import CommunicationPage from "./pages/communication/page";
 // 스타일
 import "./index.css";
-import "./custom.css";
 
 const router = createBrowserRouter([
     {

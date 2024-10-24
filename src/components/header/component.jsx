@@ -11,12 +11,18 @@ import "./style.css";
 
 const Header = () => {
     const navigate = useNavigate();
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState(
+        document.querySelector("body").classList.contains("dark")
+            ? "dark"
+            : "light"
+    );
     const themeHandler = () => {
         if (theme === "light") {
             setTheme("dark");
+            document.querySelector("body").classList.add("dark");
         } else {
             setTheme("light");
+            document.querySelector("body").classList.remove("dark");
         }
     };
     return (
@@ -27,7 +33,7 @@ const Header = () => {
                     navigate("/");
                 }}
             >
-                <Logo color="black" />
+                <Logo color={theme === "dark" ? "white" : "black"} />
             </div>
             <ul className="navWrap">
                 <li
@@ -78,10 +84,17 @@ const Header = () => {
             </ul>
             <div className="funcWrap">
                 <button className="funcItem themeItem" onClick={themeHandler}>
-                    {theme === "light" ? <Sun size={24} /> : <Moon size={24} />}
+                    {theme === "light" ? (
+                        <Sun size={24} />
+                    ) : (
+                        <Moon size={24} color="white" />
+                    )}
                 </button>
                 <button className="funcItem languageItem">
-                    <Globe size={20} />
+                    <Globe
+                        size={20}
+                        color={theme === "light" ? "black" : "white"}
+                    />
                 </button>
             </div>
         </div>

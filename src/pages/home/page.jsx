@@ -26,6 +26,11 @@ import CsdcLogo from "@/assets/images/csdcLogo.png";
 import "./style.css";
 
 const HomePage = () => {
+    const [theme, setTheme] = useState(
+        document.querySelector("body").classList.contains("dark")
+            ? "dark"
+            : "light"
+    );
     const navigate = useNavigate();
     return (
         <div id="HomePage" className="page">

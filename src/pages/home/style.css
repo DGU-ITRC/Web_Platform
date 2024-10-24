@@ -354,6 +354,10 @@
     border: 3px solid var(--card-stroke);
     border-radius: 0.675rem;
 }
+
+#HomePage > .bentoWrap > .time .timeWrap > .timeTime {
+    color: var(--col-9);
+}
 #HomePage > .bentoWrap > .lab {
     grid-column: span 5;
     grid-row: span 5;
@@ -591,6 +595,10 @@
     width: max-content;
     height: 100%;
     object-fit: cover;
+}
+
+.dark #HomePage .labSlider > a > img {
+    filter: invert(1) brightness(100);
 }
 
 #HomePage .labSlider > a:last-child > img {
