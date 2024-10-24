@@ -17,6 +17,9 @@
     left: 0;
     width: 100%;
     z-index: 100;
+    background-color: var(--col-header);
+    backdrop-filter: blur(0.25rem);
+    border-bottom: 1px solid var(--col-0);
 }
 
 #RootLayout > #ContentContainer {

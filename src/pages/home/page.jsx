@@ -360,9 +360,18 @@ const TimeBento = () => {
 const LabSlider = () => {
     return (
         <div className="labSlider">
-            <img src={PlassLogo} alt="" />
-            <img src={HriLogo} alt="" />
-            <img src={CsdcLogo} alt="" />
+            <a
+                href="https://sites.google.com/dgu.ac.kr/plass/home"
+                target="_blank"
+            >
+                <img src={PlassLogo} alt="" />
+            </a>
+            <a href="http://hri.dongguk.edu/" target="_blank">
+                <img src={HriLogo} alt="" />
+            </a>
+            <a href="https://sites.google.com/dgu.ac.kr/csdc/" target="_blank">
+                <img src={CsdcLogo} alt="" />
+            </a>
         </div>
     );
 };

@@ -167,6 +167,10 @@
     list-style-type: disc;
     padding-left: 1.5rem;
 }
+.article ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+}
 
 .article strong {
     font-weight: var(--font-weight-medium);
@@ -192,6 +196,8 @@
 }
 
 .article table tr td {
+    display: flex;
+    flex-direction: column;
     color: var(--col-8);
     padding: 1rem;
 }

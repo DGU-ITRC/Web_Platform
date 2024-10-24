@@ -573,18 +573,27 @@
     height: 40%;
 }
 
-#HomePage .labSlider > img {
+#HomePage .labSlider > a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     opacity: 0.3;
     height: 3rem;
-    object-fit: cover;
     transition: 0.3s;
 }
 
-#HomePage .labSlider > img:hover {
+#HomePage .labSlider > a:hover {
     opacity: 0.5;
 }
 
-#HomePage .labSlider > img:last-child {
+#HomePage .labSlider > a > img {
+    width: max-content;
+    height: 100%;
+    object-fit: cover;
+}
+
+#HomePage .labSlider > a:last-child > img {
     height: 1.75rem;
 }
 

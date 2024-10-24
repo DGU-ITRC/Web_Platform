@@ -15,7 +15,11 @@ const IntroductionPage = () => {
                     <p>ITRC-KSRC</p>
                     <p className="description">(Knowledge Science)</p>
                 </div>
-                <a className="linkBtn" href="https://ksrc.dongguk.edu/">
+                <a
+                    className="linkBtn"
+                    href="https://ksrc.dongguk.edu/"
+                    target="_blank"
+                >
                     동국대학교 Knowledge Science 연구센터
                     <ArrowUpRight size={20} />
                 </a>
