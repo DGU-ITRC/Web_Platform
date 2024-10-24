@@ -49,7 +49,13 @@ const StoryItem = ({ side, year, month, title, images = [] }) => {
                     <h1>{title}</h1>
                     <div className="imageWrap">
                         {images.map((image, index) => (
-                            <img key={index} src={image} alt="" />
+                            <img
+                                className="storyImage"
+                                key={index}
+                                src={image}
+                                loading="lazy"
+                                alt=""
+                            />
                         ))}
                     </div>
                 </div>

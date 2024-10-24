@@ -1,5 +1,5 @@
 // 라이브러리
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // 서비스
 // 컴포넌트
@@ -12,19 +12,33 @@ import "./style.css";
 const Header = () => {
     const navigate = useNavigate();
     const [theme, setTheme] = useState(
-        document.querySelector("body").classList.contains("dark")
-            ? "dark"
-            : "light"
+        document.querySelector("body").classList.contains("darkMode")
+            ? "darkMode"
+            : "lightMode"
     );
     const themeHandler = () => {
-        if (theme === "light") {
-            setTheme("dark");
-            document.querySelector("body").classList.add("dark");
+        if (theme === "lightMode") {
+            setTheme("darkMode");
+            document.querySelector("body").classList.add("darkMode");
         } else {
-            setTheme("light");
-            document.querySelector("body").classList.remove("dark");
+            setTheme("lightMode");
+            document.querySelector("body").classList.remove("darkMode");
         }
     };
+    useEffect(() => {
+        const savedTheme = document.cookie
+            .split("; ")
+            .find((row) => row.startsWith("theme="))
+            ?.split("=")[1];
+
+        if (savedTheme) {
+            setTheme(savedTheme);
+            document.querySelector("body").classList.add(savedTheme);
+        }
+    }, []);
+    useEffect(() => {
+        document.cookie = `theme=${theme}; path=/;`;
+    }, [theme]);
     return (
         <div id="Header">
             <div
@@ -33,7 +47,7 @@ const Header = () => {
                     navigate("/");
                 }}
             >
-                <Logo color={theme === "dark" ? "white" : "black"} />
+                <Logo color={theme === "darkMode" ? "white" : "black"} />
             </div>
             <ul className="navWrap">
                 <li
@@ -84,7 +98,7 @@ const Header = () => {
             </ul>
             <div className="funcWrap">
                 <button className="funcItem themeItem" onClick={themeHandler}>
-                    {theme === "light" ? (
+                    {theme === "lightMode" ? (
                         <Sun size={24} />
                     ) : (
                         <Moon size={24} color="white" />
@@ -93,7 +107,7 @@ const Header = () => {
                 <button className="funcItem languageItem">
                     <Globe
                         size={20}
-                        color={theme === "light" ? "black" : "white"}
+                        color={theme === "lightMode" ? "black" : "white"}
                     />
                 </button>
             </div>

@@ -27,6 +27,7 @@
         --col-orange-0: #ff7b0000;
         --col-orange-1: #ff7b0066;
         --col-orange-2: #ff7b0010;
+        --col-orange-3: #ff7a00;
         /* 택스트 굵기 */
         --font-weight-thin: 150;
         --font-weight-extralight: 250;
@@ -53,7 +54,7 @@
         --shadow: 0 0 0.75rem 0 #eeeeee;
         --shadow-active: 0 0.25rem 1rem 0 #dfdfdf;
     }
-    .dark {
+    .darkMode {
         /* 전역 변수 */
         --background: #191817;
         --forground: #ffffff;
@@ -76,6 +77,7 @@
         --col-orange-0: #ff7b0000;
         --col-orange-1: #ff7b0066;
         --col-orange-2: #ff7b0010;
+        --col-orange-3: #db6a009c;
         /* 택스트 굵기 */
         --font-weight-thin: 150;
         --font-weight-extralight: 250;
@@ -91,7 +93,7 @@
         /* 카드 색상 */
         --card-text: #eceded;
         --card-background: #21201f;
-        --card-background-inverse: #6e4b27;
+        --card-background-inverse: #814100;
         --card-stroke: #615448;
         --card-radius: 1rem;
         /* 푸터 색상 */

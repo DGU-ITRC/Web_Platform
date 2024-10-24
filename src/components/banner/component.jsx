@@ -19,6 +19,7 @@ const Banner = ({
                 backgroundPosition: "center",
             }}
         >
+            <div className="dimmed"></div>
             <h1 className="slogan">{slogan}</h1>
             <p className="description">{description}</p>
             <button className="btn funcBtn" onClick={func}>
