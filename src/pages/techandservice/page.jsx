@@ -24,7 +24,6 @@ const TechAndServicePage = () => {
                 </div>
             </div>
             <div className="article">
-                <div className="section sticky">asdadadsadsa</div>
                 <div className="section">
                     <div className="sectionHeaderWrap">
                         <h1>이상행위 탐지 모델</h1>
