@@ -1,11 +1,16 @@
 // 라이브러리
 import { useState, useRef, useEffect } from "react";
 // 서비스
-import { getNewNews, getHotNews } from "@/services/newsService";
+import {
+    getNewNews,
+    getHotNews,
+    updateViewCount,
+} from "@/services/newsService";
 // 컴포넌트
 import Banner from "@/components/banner/component";
 // 이미지
 import BannerBg from "@/assets/images/newsLetterBanner.png";
+import NewsPlaceholder from "@/assets/images/newsPlaceholder.png";
 // 아이콘
 import { LucideArrowLeft, LucideArrowRight, ArrowUpRight } from "lucide-react";
 // 스타일
@@ -26,6 +31,10 @@ const NewsPage = () => {
             });
         }
     };
+    const updateCount = (id, url) => {
+        updateViewCount(id);
+        window.open(url);
+    };
     useEffect(() => {
         getHotNews().then((res) => {
             setHotNews(res);
@@ -44,17 +53,19 @@ const NewsPage = () => {
                 </div>
             </div>
             <div className="article hot">
-                <NewsSlider data={hotNews} />
+                <NewsSlider
+                    data={hotNews}
+                    onClick={updateCount}
+                    key={hotNews.length}
+                />
             </div>
             <div className="article new">
                 <h1>최신 기사</h1>
                 <div className="newsGrid">
                     {newNews.map((news, index) => (
                         <NewsItem
-                            thumb={news.thumb}
-                            title={news.title}
-                            content={news.content}
-                            url={news.url}
+                            data={news}
+                            onClick={updateCount}
                             key={index}
                         />
                     ))}
@@ -74,43 +85,51 @@ const NewsPage = () => {
     );
 };
 
-const NewsItem = ({ thumb, title, content, url }) => {
+const NewsItem = ({ data = {}, onClick = () => {} }) => {
     return (
         <div
             className="newsItem"
             onClick={() => {
-                window.open(url);
+                onClick(data.id, data.url);
             }}
         >
             <div className="imgWrap">
-                <img src={thumb} alt="" />
+                {data.thumb ? (
+                    <img src={data.thumb} alt="" />
+                ) : (
+                    <>
+                        <img src={NewsPlaceholder} alt="" />
+                        <h6>{data.title}</h6>
+                    </>
+                )}
+
                 <div className="dimmed">
                     <span>새 창에서 기사 보기</span>
                     <ArrowUpRight size={20} />
                 </div>
             </div>
             <div className="textWrap">
-                <h3 className="title">{title}</h3>
-                <p className="content">{content}</p>
-                <span className="info">2020</span>
+                <h3 className="title">{data.title}</h3>
+                <p className="content">{data.content}</p>
+                <span className="info">{data.timeGap}</span>
             </div>
         </div>
     );
 };
 
-const NewsSlider = ({ data = [] }) => {
+const NewsSlider = ({ data = [], onClick = () => {} }) => {
     const sliderRef = useRef();
     const [curSlide, setCurSlide] = useState(0);
     const [maxSlide, setMaxSlide] = useState(data.length);
     const slideHandler = (method) => {
         if (method === "prev") {
-            if (curSlide === 0) {
+            if (curSlide <= 0) {
                 setCurSlide(maxSlide - 1);
             } else {
                 setCurSlide(curSlide - 1);
             }
         } else if (method === "next") {
-            if (curSlide === maxSlide) {
+            if (curSlide >= maxSlide - 1) {
                 setCurSlide(0);
             } else {
                 setCurSlide(curSlide + 1);
@@ -140,11 +159,34 @@ const NewsSlider = ({ data = [] }) => {
             <div className="newsSlider">
                 <div className="newsSlideWrap" ref={sliderRef}>
                     {data.map((news, index) => (
-                        <div className="newsSlide" key={index}>
-                            <img src={news.thumb} alt="" />
+                        <div
+                            className="newsSlide"
+                            key={index}
+                            onClick={() => {
+                                onClick(news.id, news.url);
+                            }}
+                        >
+                            <div className="imgWrap">
+                                <img
+                                    src={
+                                        news.thumb
+                                            ? news.thumb
+                                            : NewsPlaceholder
+                                    }
+                                    alt=""
+                                />
+                                <div className="dimmed">
+                                    <span>새 창에서 기사 보기</span>
+                                    <ArrowUpRight size={20} />
+                                </div>
+                            </div>
                             <div className="textWrap">
+                                <span className="badge">
+                                    {news.count}회 조회됨
+                                </span>
                                 <h1>{news.title}</h1>
                                 <p>{news.content}</p>
+                                <span>{news.timeGap}</span>
                             </div>
                         </div>
                     ))}

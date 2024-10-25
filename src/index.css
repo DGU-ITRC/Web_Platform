@@ -11,6 +11,7 @@
         --max-width: 80rem;
         --radius: 1rem;
         --dimmed: #00000066;
+        --dimmed-text: #ffffff;
         /* 색상 */
         --col-header: #ffffff77;
         --col-sub-header: #ededed;
@@ -62,6 +63,7 @@
         --max-width: 80rem;
         --radius: 1rem;
         --dimmed: #00000066;
+        --dimmed-text: #ffffff;
         /* 색상 */
         --col-header: #00000077;
         --col-sub-header: #121212;
@@ -243,6 +245,11 @@ body {
     font-weight: var(--font-weight-medium);
     color: var(--col-6);
 }
+.article span {
+    font-size: 1rem;
+    font-weight: var(--font-weight-reguler);
+    color: var(--col-5);
+}
 
 .article ul {
     list-style-type: disc;
@@ -310,6 +317,10 @@ body {
     padding-left: 1rem;
 }
 
+.btn.iconBtn > svg {
+    stroke: var(--col-0);
+}
+
 .btn:hover {
     background-color: var(--col-8);
     scale: 1.025;
@@ -318,6 +329,16 @@ body {
     background-color: var(--col-0);
     color: var(--col-9);
     scale: 0.975;
+}
+
+.badge {
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    border: 1px solid var(--col-orange);
+    border-radius: 4rem;
+    font-size: 1rem !important;
+    font-weight: var(--font-weight-semibold) !important;
+    color: var(--col-orange) !important;
 }
 
 .page {

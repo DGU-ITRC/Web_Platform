@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // 서비스
+import { getHotNews, updateViewCount } from "@/services/newsService";
 // 컴포넌트
 // 아이콘
 import AvailableBg from "@/assets/images/availableBg.png";
@@ -27,12 +28,13 @@ import CsdcLogo from "@/assets/images/csdcLogo.png";
 import "./style.css";
 
 const HomePage = () => {
+    const navigate = useNavigate();
     const [theme, setTheme] = useState(
         document.querySelector("body").classList.contains("dark")
             ? "dark"
             : "light"
     );
-    const navigate = useNavigate();
+
     return (
         <div id="HomePage" className="page">
             <div className="heroSection">
@@ -420,13 +422,21 @@ const LabSlider = () => {
 };
 
 const News = () => {
+    const [hotNews, setHotNews] = useState([]);
+    const updateCount = (id, url) => {
+        updateViewCount(id);
+        window.open(url);
+    };
+    useEffect(() => {
+        getHotNews().then((res) => {
+            setHotNews(res);
+        });
+    }, []);
     return (
         <div className="newsWrap">
-            <NewsItem />
-            <NewsItem />
-            <NewsItem />
-            <NewsItem />
-            <NewsItem />
+            {hotNews.map((news, index) => (
+                <NewsItem data={news} onClick={updateCount} key={index} />
+            ))}
             <div className="updateInfo">
                 최종 갱신 : 2024년 12월 12일 00시 00분
             </div>
@@ -434,16 +444,20 @@ const News = () => {
     );
 };
 
-const NewsItem = ({
-    title = "뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목뉴스 제목",
-    publisher = "출판사",
-    created = "1시간전",
-}) => {
-    const [timeGap, setTimeGap] = useState("");
+const NewsItem = ({ data = {}, onClick = () => {} }) => {
     return (
-        <div className="newsItem">
-            <div className="newsTitle">{title}</div>
-            <div className="newsInfo">{publisher + " · " + timeGap}</div>
+        <div
+            className="newsItem"
+            onClick={(e) => {
+                onClick(data.id, data.url);
+                e.preventDefault();
+                e.stopPropagation();
+            }}
+        >
+            <div className="newsTitle">{data.title}</div>
+            <div className="newsInfo">
+                {data.publisher} · {data.timeGap}
+            </div>
         </div>
     );
 };
