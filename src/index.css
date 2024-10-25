@@ -291,6 +291,10 @@ body {
 }
 
 .btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
     padding: 0.5rem 1.25rem;
     background-color: var(--col-9);
     border: 1px solid var(--col-9);
@@ -300,6 +304,10 @@ body {
     color: var(--col-0);
     scale: 1;
     transition: 0.3s;
+}
+
+.btn.iconBtn {
+    padding-left: 1rem;
 }
 
 .btn:hover {

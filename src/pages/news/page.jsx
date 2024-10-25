@@ -1,6 +1,7 @@
 // 라이브러리
 import { useState, useRef, useEffect } from "react";
 // 서비스
+import { getNewNews, getHotNews } from "@/services/newsService";
 // 컴포넌트
 import Banner from "@/components/banner/component";
 // 이미지
@@ -9,8 +10,30 @@ import BannerBg from "@/assets/images/newsLetterBanner.png";
 import { LucideArrowLeft, LucideArrowRight, ArrowUpRight } from "lucide-react";
 // 스타일
 import "./style.css";
+import { Plus } from "lucide-react";
 
 const NewsPage = () => {
+    const [hotNews, setHotNews] = useState([]);
+    const [newNews, setNewNews] = useState([]);
+    const [newsPage, setNewsPage] = useState(1);
+    const loadMoreNews = () => {
+        if (newNews[newNews.length - 1].id == 1) {
+            window.alert("불러올 기사가 없습니다.");
+        } else {
+            getNewNews(newsPage + 1).then((res) => {
+                setNewNews([...newNews, ...res]);
+                setNewsPage(newsPage + 1);
+            });
+        }
+    };
+    useEffect(() => {
+        getHotNews().then((res) => {
+            setHotNews(res);
+        });
+        getNewNews(1).then((res) => {
+            setNewNews(res);
+        });
+    }, []);
     return (
         <div id="NewsPage" className="page">
             <div className="pageInfo">
@@ -21,25 +44,25 @@ const NewsPage = () => {
                 </div>
             </div>
             <div className="article hot">
-                <NewsSlider
-                    data={[
-                        { image: null, title: "테스트1", content: "테스트" },
-                        { image: null, title: "테스트2", content: "테스트" },
-                        { image: null, title: "테스트3", content: "테스트" },
-                        { image: null, title: "테스트4", content: "테스트" },
-                    ]}
-                />
+                <NewsSlider data={hotNews} />
             </div>
             <div className="article new">
                 <h1>최신 기사</h1>
                 <div className="newsGrid">
-                    <NewsItem image={null} title="테스트" content="테스트" />
-                    <NewsItem image={null} title="테스트" content="테스트" />
-                    <NewsItem image={null} title="테스트" content="테스트" />
-                    <NewsItem image={null} title="테스트" content="테스트" />
-                    <NewsItem image={null} title="테스트" content="테스트" />
-                    <NewsItem image={null} title="테스트" content="테스트" />
+                    {newNews.map((news, index) => (
+                        <NewsItem
+                            thumb={news.thumb}
+                            title={news.title}
+                            content={news.content}
+                            url={news.url}
+                            key={index}
+                        />
+                    ))}
                 </div>
+                <button className="btn iconBtn" onClick={loadMoreNews}>
+                    <Plus size={20} />
+                    더보기
+                </button>
             </div>
             <Banner
                 slogan="동국대 ITRC에서 제공하는 뉴스레터를 받아보세요."
@@ -51,11 +74,16 @@ const NewsPage = () => {
     );
 };
 
-const NewsItem = ({ image, title, content }) => {
+const NewsItem = ({ thumb, title, content, url }) => {
     return (
-        <div className="newsItem">
+        <div
+            className="newsItem"
+            onClick={() => {
+                window.open(url);
+            }}
+        >
             <div className="imgWrap">
-                <img src={image} alt="" />
+                <img src={thumb} alt="" />
                 <div className="dimmed">
                     <span>새 창에서 기사 보기</span>
                     <ArrowUpRight size={20} />
@@ -82,7 +110,7 @@ const NewsSlider = ({ data = [] }) => {
                 setCurSlide(curSlide - 1);
             }
         } else if (method === "next") {
-            if (curSlide === maxSlide - 1) {
+            if (curSlide === maxSlide) {
                 setCurSlide(0);
             } else {
                 setCurSlide(curSlide + 1);
@@ -113,7 +141,7 @@ const NewsSlider = ({ data = [] }) => {
                 <div className="newsSlideWrap" ref={sliderRef}>
                     {data.map((news, index) => (
                         <div className="newsSlide" key={index}>
-                            <img src={news.image} alt="" />
+                            <img src={news.thumb} alt="" />
                             <div className="textWrap">
                                 <h1>{news.title}</h1>
                                 <p>{news.content}</p>

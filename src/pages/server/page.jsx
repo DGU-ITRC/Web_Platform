@@ -94,27 +94,58 @@ const ServerPage = () => {
                     </div>
                 </div>
                 <div className="section">
-                    <h3>실시간 서버 상태</h3>
-                    <BarChart
-                        width={1280}
-                        height={300}
-                        data={data}
-                        margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}
-                    >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="time" />
-                        <YAxis max={6} />
-                        <Tooltip />
-                        <Legend />
-                        <ReferenceLine y={0} stroke="#000" />
-                        <Bar dataKey="online" stackId="a" fill="#ff7a00" />
-                        <Bar dataKey="offline" stackId="a" fill="#ff7b0066" />
-                    </BarChart>
+                    <div className="realtime">
+                        <h3>실시간 서버 상태</h3>
+                    </div>
+                    <h3>통계</h3>
+                    <div className="day">
+                        <p>24시간</p>
+                        <BarChart width={1280} height={300} data={data}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="time" />
+                            <Tooltip />
+                            <Legend align="right" verticalAlign="top" />
+                            <ReferenceLine y={0} stroke="#000" />
+                            <Bar dataKey="online" stackId="a" fill="#ff7a00" />
+                            <Bar
+                                dataKey="offline"
+                                stackId="a"
+                                fill="#ff7b0066"
+                            />
+                        </BarChart>
+                    </div>
+                    <div className="week">
+                        <p>일주일</p>
+                        <BarChart width={1280} height={300} data={data}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="time" />
+                            <Tooltip />
+                            <Legend align="right" verticalAlign="top" />
+                            <ReferenceLine y={0} stroke="#000" />
+                            <Bar dataKey="online" stackId="a" fill="#ff7a00" />
+                            <Bar
+                                dataKey="offline"
+                                stackId="a"
+                                fill="#ff7b0066"
+                            />
+                        </BarChart>
+                    </div>
+                    <div className="month">
+                        <p>한달</p>
+                        <BarChart width={1280} height={300} data={data}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="time" />
+                            <Tooltip />
+                            <Legend align="right" verticalAlign="top" />
+                            <ReferenceLine y={0} stroke="#000" />
+                            <Bar dataKey="online" stackId="a" fill="#ff7a00" />
+                            <Bar
+                                dataKey="offline"
+                                stackId="a"
+                                fill="#ff7b0066"
+                            />
+                        </BarChart>
+                    </div>
                 </div>
             </div>
         </div>

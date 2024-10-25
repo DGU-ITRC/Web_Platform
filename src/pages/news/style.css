@@ -35,6 +35,16 @@
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 #NewsPage > .article > .newsGrid > .newsItem > .imgWrap {
@@ -75,20 +85,41 @@
     opacity: 1;
 }
 
+#NewsPage > .article > .newsGrid > .newsItem > .textWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 #NewsPage > .article > .newsGrid > .newsItem > .textWrap > .title {
+    transition: 0.3s;
+    display: -webkit-box;
+    width: 100%;
     font-size: 1.25rem;
     font-weight: var(--font-weight-medium);
     color: var(--col-8);
-    transition: 0.3s;
+    word-wrap: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #NewsPage > .article > .newsGrid > .newsItem:hover > .textWrap > .title {
     color: var(--col-orange);
 }
 #NewsPage > .article > .newsGrid > .newsItem > .textWrap > .content {
+    display: -webkit-box;
+    width: 100%;
+    max-height: 4.5rem;
     font-size: 1rem;
     font-weight: var(--font-weight-regular);
     color: var(--col-5);
+    word-wrap: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 #NewsPage > .article > .newsGrid > .newsItem > .textWrap > .info {
     font-size: 0.875rem;
