@@ -52,6 +52,9 @@
         --card-background-active: #ff7b0010;
         --card-stroke: #eeedeb;
         --card-radius: 1rem;
+        /* 터미널 색상 */
+        --terminal-text: #ffffff;
+        --terminal-background: #000000;
         /* 푸터 색상 */
         --footer-text: #9d9d9d;
         --footer-foreground: #232323;
@@ -142,6 +145,20 @@
     font-style: normal;
     font-display: swap;
     src: url("./woff2/PretendardVariable.woff2") format("woff2-variations");
+}
+
+@font-face {
+    font-family: "D2Coding";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./assets/fonts/D2Coding.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "D2CodingBold";
+    font-style: normal;
+    font-weight: 700;
+    src: url("./assets/fonts/D2CodingBold.ttf") format("truetype");
 }
 
 * {
@@ -413,6 +430,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 2rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -425,12 +443,11 @@ body {
 .popupWrap .popup {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1.5rem;
     width: 32rem;
     background-color: var(--col-0);
     border: 1px solid var(--card-stroke);
     border-radius: var(--card-radius);
+    overflow: hidden;
 }
 
 .popupWrap .popup > .popupHeader {
@@ -438,20 +455,26 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
+    padding: 0.75rem;
+    padding-bottom: 0.5rem;
 }
 
 .popupWrap .popup > .popupHeader > svg {
     stroke-width: 2.3;
+    color: var(--col-9);
 }
 
 .popupWrap .popup h1 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: var(--font-weight-medium);
+    color: var(--col-9);
 }
 .popupWrap .popup textarea {
+    padding: 1rem;
     width: 100%;
-    height: 10rem;
+    height: 20rem;
     background-color: var(--col-9);
+    border-radius: var(--card-radius);
     font-size: 0.75rem;
     font-weight: var(--font-weight-light);
     color: var(--col-0);
@@ -460,5 +483,47 @@ body {
 .popupWrap .popup > .popupContent {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.25rem;
+    padding: 1rem;
+    width: calc(100%-4rem);
+    height: 20rem;
+    background-color: var(--terminal-background);
+    border-radius: var(--card-radius);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-reguler);
+    color: var(--terminal-text);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.popupWrap .popup > .popupContent,
+.popupWrap .popup > .popupContent > p {
+    font-family: "D2Coding" !important;
+}
+
+.popupWrap .popup > .popupContent::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 100%;
+    background-color: transparent;
+}
+
+.popupWrap .popup > .popupContent::-webkit-scrollbar-thumb {
+    background-color: var(--col-1);
+    border-radius: 4rem;
+}
+
+progress {
+    width: 100%;
+    height: 0.75rem;
+    border-radius: 4rem;
+    overflow: hidden;
+    -webkit-appearance: none;
+}
+
+::-webkit-progress-bar {
+    background-color: var(--col-8);
+}
+
+::-webkit-progress-value {
+    background-color: var(--col-orange);
 }

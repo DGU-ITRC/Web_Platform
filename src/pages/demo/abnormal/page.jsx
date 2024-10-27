@@ -14,8 +14,9 @@ const AbnromalPage = () => {
     const [file, setFile] = useState(null);
     const [dragOver, setDragOver] = useState(false);
     const [isPopup, setisPopup] = useState(false);
-    const [isUploading, setIsUploading] = useState(false);
-    const [progress, setProgress] = useState("");
+    const [process, setProcess] = useState(0);
+    const [progress, setProgress] = useState(-1);
+    const [log, setLog] = useState([]);
     useEffect(() => {
         console.log(file);
         if (file && file.size > 10 * 1024 * 1024) {
@@ -31,24 +32,23 @@ const AbnromalPage = () => {
     // 구현할 InputDragDrop에서 파일이 선택될 때 상태를 업데이트 한다.
     const handleFileSelect = (file) => {
         setFile(file);
-        setProgress("");
     };
 
     // 파일 업로드를 처리하는 로직
     const handleUpload = async () => {
         setisPopup(true);
-        setIsUploading(true);
-
+        setProcess(1);
         const uploadUrl = "http://localhost:50000/upload";
         const formData = new FormData();
         formData.append("video", file);
 
         // 파일 업로드 요청
         const response = await axios.post(uploadUrl, formData);
-        console.log(response.data);
-        const filename = response.data.filename;
-        console.log(filename);
+        const filename = response.data;
+        await handleProgress(filename);
+    };
 
+    const handleProgress = async (filename) => {
         const inferenceUrl = `http://localhost:50000/inference?video=${filename}`;
 
         // EventSource를 사용해 진행 상황 수신
@@ -56,19 +56,22 @@ const AbnromalPage = () => {
 
         eventSource.onmessage = (event) => {
             const data = JSON.parse(event.data);
-            setProgress(data.progress);
-
-            // 진행 상황이 100%이면 스트리밍 종료
-            if (data.progress === 100) {
-                eventSource.close();
-                setIsUploading(false);
+            if (data.message) {
+                setLog((prevLog) => [...prevLog, data.message]);
+            } else if (data.progress) {
+                if (data.progress >= 100) {
+                    setProgress(-1);
+                } else {
+                    setProgress(data.progress);
+                }
+            } else {
+                console.log(data);
             }
         };
 
         eventSource.onerror = (error) => {
-            console.error("Error occurred:", error);
             eventSource.close();
-            setIsUploading(false);
+            setProcess(2);
         };
     };
 
@@ -108,8 +111,14 @@ const AbnromalPage = () => {
     const handleChange = (e) => {
         const file = e.target.files ? e.target.files[0] : null;
         handleFileSelect(file);
-
         e.target.value = "";
+    };
+
+    const initDemo = () => {
+        setFile(null);
+        setisPopup(false);
+        setProcess(0);
+        setLog([]);
     };
     return (
         <div id="AbnromalPage" className="page">
@@ -241,20 +250,23 @@ const AbnromalPage = () => {
                 <div className="popupWrap">
                     <div className="popup progressPopup">
                         <div className="popupHeader">
-                            <FilePieChart size={20} />
+                            <FilePieChart size={16} />
                             <h1>분석</h1>
                         </div>
                         <div className="popupContent">
-                            {progress}
-                            {/* <textarea
-                                name=""
-                                id=""
-                                value={progress}
-                                readOnly
-                                key={progress}
-                            /> */}
+                            {log.map((item, index) => (
+                                <p key={index}>{item}</p>
+                            ))}
+                            {progress !== -1 && (
+                                <progress value={progress} max="100"></progress>
+                            )}
                         </div>
                     </div>
+                    {process === 2 && (
+                        <button className="btn" onClick={initDemo}>
+                            닫기
+                        </button>
+                    )}
                 </div>
             )}
         </div>
