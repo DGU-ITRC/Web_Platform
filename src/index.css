@@ -302,10 +302,13 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.5rem 1.25rem;
+    padding: 0.625rem 1.25rem;
+    min-width: 2.625rem;
+    min-height: 2.625rem;
     background-color: var(--col-9);
     border: 1px solid var(--col-9);
     border-radius: 4rem;
+    line-height: 0.875rem;
     font-size: 1rem;
     font-weight: var(--font-weight-medium);
     color: var(--col-0);
@@ -317,8 +320,17 @@ body {
     padding-left: 1rem;
 }
 
-.btn.iconBtn > svg {
+.btn.iconOnlyBtn {
+    padding: 0.625rem;
+}
+
+.btn.iconBtn > svg,
+.btn.iconOnlyBtn > svg {
     stroke: var(--col-0);
+}
+.btn.iconBtn:active > svg,
+.btn.iconOnlyBtn:active > svg {
+    stroke: var(--col-9);
 }
 
 .btn:hover {

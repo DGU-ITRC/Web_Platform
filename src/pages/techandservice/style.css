@@ -24,8 +24,16 @@
 #TechAndServicePage > .article > .section > .sectionHeaderWrap {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 1.25rem;
     width: 100%;
+}
+
+#TechAndServicePage > .article > .section > .sectionHeaderWrap > .linkWrap {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 }
 
 #TechAndServicePage > .article > .section .architectureWrap {

@@ -1,4 +1,5 @@
 // 라이브러리
+import { useNavigate } from "react-router-dom";
 // 서비스
 // 컴포넌트
 import Banner from "@/components/banner/component";
@@ -10,6 +11,7 @@ import DeepscanModel from "@/assets/images/architecture/deepscanModel.png";
 import FalldownModel1 from "@/assets/images/architecture/falldownModel1.png";
 import FalldownModel2 from "@/assets/images/architecture/falldownModel2.png";
 // 아이콘
+import { Github, Play } from "lucide-react";
 // 스타일
 import "./style.css";
 
@@ -25,9 +27,11 @@ const TechAndServicePage = () => {
             </div>
             <div className="article">
                 <div className="section">
-                    <div className="sectionHeaderWrap">
-                        <h1>이상행위 탐지 모델</h1>
-                    </div>
+                    <SectionHeader
+                        title="이상행위 탐지 모델"
+                        repository="https://github.com"
+                        demo="/"
+                    />
                     <table>
                         <tr>
                             <th>소개</th>
@@ -96,9 +100,11 @@ const TechAndServicePage = () => {
                     </table>
                 </div>
                 <div className="section">
-                    <div className="sectionHeaderWrap">
-                        <h1>질의응답 모델</h1>
-                    </div>
+                    <SectionHeader
+                        title="질의응답 모델"
+                        repository="https://github.com"
+                        demo="/"
+                    />
                     <table>
                         <tr>
                             <th>소개</th>
@@ -151,9 +157,11 @@ const TechAndServicePage = () => {
                     </table>
                 </div>
                 <div className="section">
-                    <div className="sectionHeaderWrap">
-                        <h1>딥러닝 기반 사진 검색 모델</h1>
-                    </div>
+                    <SectionHeader
+                        title="딥러닝 기반 사진 검색 모델"
+                        repository="https://github.com"
+                        demo="/"
+                    />
                     <table>
                         <tr>
                             <th>소개</th>
@@ -237,9 +245,11 @@ const TechAndServicePage = () => {
                     </table>
                 </div>
                 <div className="section">
-                    <div className="sectionHeaderWrap">
-                        <h1>낙상 탐지 모델</h1>
-                    </div>
+                    <SectionHeader
+                        title="낙상 탐지 모델"
+                        repository="https://github.com"
+                        demo="/"
+                    />
                     <table>
                         <tr>
                             <th>소개</th>
@@ -315,6 +325,38 @@ const TechAndServicePage = () => {
                 }}
                 background={BannerBg}
             />
+        </div>
+    );
+};
+
+const SectionHeader = ({ title = "", repository = "", demo = "" }) => {
+    const navigate = useNavigate();
+    return (
+        <div className="sectionHeaderWrap">
+            <h1>{title}</h1>
+            <div className="linkWrap">
+                {repository !== "" && (
+                    <button
+                        className="btn iconOnlyBtn"
+                        onClick={() => {
+                            window.open(repository);
+                        }}
+                    >
+                        <Github size={20} />
+                    </button>
+                )}
+                {demo !== "" && (
+                    <button
+                        className="btn iconBtn"
+                        onClick={() => {
+                            navigate(demo);
+                        }}
+                    >
+                        <Play size={20} />
+                        데모
+                    </button>
+                )}
+            </div>
         </div>
     );
 };
