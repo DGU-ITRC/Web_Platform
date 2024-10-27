@@ -9,6 +9,7 @@ import { ArrowUpRight, FilePieChart } from "lucide-react";
 import Upload from "@/assets/images/uploadIcon.png";
 // 스타일
 import "./style.css";
+const apiBaseURL = "http://210.94.194.107:50000";
 
 const AbnromalPage = () => {
     const [file, setFile] = useState(null);
@@ -38,7 +39,7 @@ const AbnromalPage = () => {
     const handleUpload = async () => {
         setisPopup(true);
         setProcess(1);
-        const uploadUrl = "http://localhost:50000/upload";
+        const uploadUrl = apiBaseURL + "/upload";
         const formData = new FormData();
         formData.append("video", file);
 
@@ -49,7 +50,8 @@ const AbnromalPage = () => {
     };
 
     const handleProgress = async (filename) => {
-        const inferenceUrl = `http://localhost:50000/inference?video=${filename}`;
+        const target = document.getElementById("terminal");
+        const inferenceUrl = apiBaseURL + `/inference?video=${filename}`;
 
         // EventSource를 사용해 진행 상황 수신
         const eventSource = new EventSource(inferenceUrl);
@@ -67,9 +69,11 @@ const AbnromalPage = () => {
             } else {
                 console.log(data);
             }
+            target.scrollTop = target.scrollHeight;
         };
 
         eventSource.onerror = (error) => {
+            target.scrollTop = target.scrollHeight;
             eventSource.close();
             setProcess(2);
         };
@@ -253,7 +257,7 @@ const AbnromalPage = () => {
                             <FilePieChart size={16} />
                             <h1>분석</h1>
                         </div>
-                        <div className="popupContent">
+                        <div id="terminal" className="popupContent">
                             {log.map((item, index) => (
                                 <p key={index}>{item}</p>
                             ))}

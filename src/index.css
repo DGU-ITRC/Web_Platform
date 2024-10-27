@@ -444,7 +444,7 @@ body {
 .popupWrap .popup {
     display: flex;
     flex-direction: column;
-    width: 32rem;
+    width: 48rem;
     background-color: var(--col-0);
     border: 1px solid var(--card-stroke);
     border-radius: var(--card-radius);
@@ -486,8 +486,7 @@ body {
     flex-direction: column;
     gap: 0.25rem;
     padding: 1rem;
-    width: calc(100%-4rem);
-    height: 20rem;
+    height: 32rem;
     background-color: var(--terminal-background);
     border-radius: var(--card-radius);
     font-size: 0.875rem;
