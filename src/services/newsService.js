@@ -51,8 +51,6 @@ const getHotNews = async () => {
         for (let i = 0; i < response.data.length; i++) {
             response.data[i].timeGap = calcTimeGap(response.data[i].created);
         }
-        console.log(response.data);
-
         return response.data;
     } catch (err) {
         console.error("요청 중 오류 발생", err);
