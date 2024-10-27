@@ -13,6 +13,7 @@ import TechAndServicePage from "./pages/techandservice/page";
 import NewsPage from "./pages/news/page";
 import CommunicationPage from "./pages/communication/page";
 import ServerPage from "./pages/server/page";
+import AbnromalPage from "./pages/demo/abnormal/page";
 // 스타일
 import "./index.css";
 
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: "/server",
                 element: <ServerPage />,
+            },
+            {
+                path: "/demo/abnormal",
+                element: <AbnromalPage />,
             },
         ],
     },

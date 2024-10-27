@@ -11,7 +11,7 @@ import DeepscanModel from "@/assets/images/architecture/deepscanModel.png";
 import FalldownModel1 from "@/assets/images/architecture/falldownModel1.png";
 import FalldownModel2 from "@/assets/images/architecture/falldownModel2.png";
 // 아이콘
-import { Github, Play } from "lucide-react";
+import { Github, Play, ArrowUpRight } from "lucide-react";
 // 스타일
 import "./style.css";
 
@@ -24,13 +24,21 @@ const TechAndServicePage = () => {
                     <p>동국대학교 연구진들이 개발한</p>
                     <p>인공지능 모델을 소개합니다.</p>
                 </div>
+                <a
+                    className="linkBtn"
+                    href="https://github.com/DGU-ITRC"
+                    target="_blank"
+                >
+                    동국대학교 ITRC 플랫폼 저장소
+                    <ArrowUpRight size={20} />
+                </a>
             </div>
             <div className="article">
                 <div className="section">
                     <SectionHeader
                         title="이상행위 탐지 모델"
-                        repository="https://github.com"
-                        demo="/"
+                        repository="https://github.com/DGU-ITRC/PLASS_Abnormal"
+                        demo="/demo/abnormal"
                     />
                     <table>
                         <tr>
