@@ -30,7 +30,18 @@ const getNewNews = async (page) => {
         return response.data;
     } catch (err) {
         console.error("요청 중 오류 발생", err);
-        return { err: err };
+        return [
+            {
+                id: 0,
+                thumb: null,
+                title: "서버 오류",
+                content: "서버에서 데이터를 받아오는 중 오류가 발생했습니다.",
+                count: 0,
+                created: 0,
+                url: "/",
+                media: null,
+            },
+        ];
     }
 };
 
@@ -45,7 +56,18 @@ const getHotNews = async () => {
         return response.data;
     } catch (err) {
         console.error("요청 중 오류 발생", err);
-        return { err: err };
+        return [
+            {
+                id: 0,
+                thumb: null,
+                title: "서버 오류",
+                content: "서버에서 데이터를 받아오는 중 오류가 발생했습니다.",
+                count: 0,
+                created: 0,
+                url: "/",
+                media: null,
+            },
+        ];
     }
 };
 
