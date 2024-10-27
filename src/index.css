@@ -438,6 +438,7 @@ body {
     height: 100svh;
     max-width: calc(100svw-2rem);
     background-color: var(--dimmed);
+    z-index: 1001;
 }
 
 .popupWrap .popup {
