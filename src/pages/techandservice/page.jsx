@@ -8,6 +8,7 @@ import BannerBg from "@/assets/images/apiBanner.png";
 import AbnormalModel from "@/assets/images/architecture/abnormalModel.png";
 import QnaModel from "@/assets/images/architecture/qnaModel.png";
 import DeepscanModel from "@/assets/images/architecture/deepscanModel.png";
+import SelfharmModle from "@/assets/images/architecture/selfharmModel.png";
 import FalldownModel1 from "@/assets/images/architecture/falldownModel1.png";
 import FalldownModel2 from "@/assets/images/architecture/falldownModel2.png";
 // 아이콘
@@ -306,7 +307,10 @@ const TechAndServicePage = () => {
                                 {/* <ol>
                                     <li></li>
                                 </ol>
-                                <div className="architectureWrap col2"></div> */}
+                                 */}
+                                <div className="architectureWrap col1">
+                                    <img src={SelfharmModle} alt="" srcset="" />
+                                </div>
                             </td>
                         </tr>
                     </table>
