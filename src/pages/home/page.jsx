@@ -49,12 +49,21 @@ const HomePage = () => {
         <div id="HomePage" className="page">
             <div className="heroSection">
                 <div className="artWallWrap">
-                    <video
+                    {/* <video
                         src={ItrcVideo}
                         className="artWallItem"
                         autoPlay
                         muted
-                    ></video>
+                    ></video> */}
+                    <iframe
+                        className="artWallItem"
+                        src="https://www.youtube.com/embed/0BQvUr7Fs2k?si=pWe9LDeAQyffdQA3&amp;controls=0"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
                 </div>
                 <div className="summaryWrap">
                     <div className="summaryItem light available ">
