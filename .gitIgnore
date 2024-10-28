@@ -4,3 +4,11 @@
 node_modules
 */.DS_Store
 **/.DS_Store
+
+# React specific
+build/
+public/
+
+# Vite specific
+dist/
+.vite/

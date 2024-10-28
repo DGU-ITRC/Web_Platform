@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 // 서비스
+import { FalldownApi } from "@/services/demoService";
 // 컴포넌트
 // 아이콘
 import { ArrowUpRight, FilePieChart } from "lucide-react";
@@ -9,9 +10,9 @@ import { ArrowUpRight, FilePieChart } from "lucide-react";
 import Upload from "@/assets/images/uploadIcon.png";
 // 스타일
 import "./style.css";
-const apiBaseURL = "http://210.94.194.83:50004";
 
 const FalldonwPage = () => {
+    const apiBaseURL = FalldownApi;
     const [file, setFile] = useState(null);
     const [dragOver, setDragOver] = useState(false);
     const [isPopup, setisPopup] = useState(false);
