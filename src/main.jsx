@@ -15,6 +15,7 @@ import NewsPage from "./pages/news/page";
 import CommunicationPage from "./pages/communication/page";
 import ServerPage from "./pages/server/page";
 import AbnromalPage from "./pages/demo/abnormal/page";
+import SelfharmPage from "./pages/demo/selfharm/page";
 import FalldonwPage from "./pages/demo/falldown/page";
 // 스타일
 import "./index.css";
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             {
                 path: "/demo/abnormal",
                 element: <AbnromalPage />,
+            },
+            {
+                path: "/demo/selfharm",
+                element: <SelfharmPage />,
             },
             {
                 path: "/demo/falldown",

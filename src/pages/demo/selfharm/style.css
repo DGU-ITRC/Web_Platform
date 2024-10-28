@@ -1,0 +1,87 @@
+#SelfharmPage {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: var(--demo-max-width);
+}
+
+#SelfharmPage > .article {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#SelfharmPage > .article > .section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#SelfharmPage > .article > .section > .terms {
+    font-weight: var(--font-weight-reguler);
+    font-size: 0.75rem;
+    color: var(--col-3);
+}
+
+.dropzonWrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropzoneWrap > input {
+    display: none;
+}
+
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    height: 36rem;
+    background-color: transparent;
+    border: 0.125rem solid var(--card-stroke);
+    border-radius: var(--card-radius);
+    transition: all 0.3s;
+}
+
+.dropzone.active {
+    background-color: var(--card-background-active);
+    border: 0.125rem solid var(--col-orange);
+}
+
+.dropzone > img {
+    height: 12rem;
+    user-select: none;
+}
+
+.dropzone > .descriptionWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropzone > .descriptionWrap > span {
+    font-size: 1rem;
+    font-weight: var(--font-weight-reguler);
+    color: var(--col-5);
+}
+
+#SelfharmPage > .article form > .typo1 {
+    font-weight: var(--font-weight-semibold);
+    font-size: 2.5rem;
+    user-select: none;
+}
+
+#SelfharmPage > .article form .fileWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--col-5);
+}
+
+#SelfharmPage > .article form .fileWrap:hover {
+    color: var(--col-9);
+}
