@@ -1,22 +1,27 @@
 // 라이브러리
-import { useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 // 컴포넌트
-import Header from "@/components/header/component";
+import DemoHeader from "@/components/demoHeader/component";
 // 스타일
 import "./style.css";
 
-const RootLayout = () => {
+const DemoLayout = () => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [useLocation()]);
     return (
-        <div id="rootLayout">
-            <div className="headerContainer">
-                <Header />
+        <div id="DemoLayout">
+            <div id="HeaderContainer">
+                <DemoHeader />
             </div>
-            <div className="contentContainer">
+            <div id="ContentContainer">
                 <Outlet />
             </div>
+            <div className="FooterContainer"></div>
         </div>
     );
 };
 
-export default RootLayout;
+export default DemoLayout;

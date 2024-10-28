@@ -255,8 +255,8 @@ const TechAndServicePage = () => {
                 <div className="section">
                     <SectionHeader
                         title="낙상 탐지 모델"
-                        repository="https://github.com"
-                        demo="/"
+                        repository="https://github.com/DGU-ITRC/CSDC_Falldown"
+                        demo="/demo/falldown"
                     />
                     <table>
                         <tr>
