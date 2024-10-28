@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // 서비스
 import { getHotNews, updateViewCount } from "@/services/newsService";
+import { Available, OnStudy } from "@/services/demoService";
+// 데이터
+import { storyData } from "@/data/data.js";
 // 컴포넌트
 // 아이콘
 import AvailableBg from "@/assets/images/availableBg.png";
@@ -14,8 +17,6 @@ import CommunicationBg from "@/assets/images/communicationBg.png";
 import RepositoryBg from "@/assets/images/repositoryBg.png";
 import ApiBg from "@/assets/images/apiBg.png";
 import ServerBg from "@/assets/images/serverBg.png";
-
-import { DguLogo } from "@/assets/svg/localIcon";
 import { ArrowRight, Plus, SendHorizonal } from "lucide-react";
 // 이미지
 import DguColorBg from "@/assets/images/dguColorBg.png";
@@ -23,7 +24,8 @@ import DguDimBg from "@/assets/images/dguDimBg.png";
 import PlassLogo from "@/assets/images/plassLogo.png";
 import HriLogo from "@/assets/images/hriLogo.png";
 import CsdcLogo from "@/assets/images/csdcLogo.png";
-
+// 동영상
+import ItrcVideo from "@/assets/videos/itrcVideo.mp4";
 // 스타일
 import "./style.css";
 
@@ -34,11 +36,26 @@ const HomePage = () => {
             ? "dark"
             : "light"
     );
-
+    const [gallery, setGallery] = useState([]);
+    useEffect(() => {
+        let images = [];
+        storyData.forEach((story) => {
+            images = images.concat(story.images);
+        });
+        const shuffledImages = images.sort(() => Math.random() - 0.5);
+        setGallery(shuffledImages);
+    }, []);
     return (
         <div id="HomePage" className="page">
             <div className="heroSection">
-                <div className="artWallWrap"></div>
+                <div className="artWallWrap">
+                    <video
+                        src={ItrcVideo}
+                        className="artWallItem"
+                        autoPlay
+                        muted
+                    ></video>
+                </div>
                 <div className="summaryWrap">
                     <div className="summaryItem light available ">
                         <img
@@ -47,7 +64,7 @@ const HomePage = () => {
                             alt=""
                             srcset=""
                         />
-                        <SummaryValue text="10" />
+                        <SummaryValue text={Available.length} />
                         <SummaryName text="사용가능한 기술" />
                         <SummaryLinkBtn>
                             <Plus size={24} />
@@ -60,7 +77,7 @@ const HomePage = () => {
                             alt=""
                             srcset=""
                         />
-                        <SummaryValue text="2" />
+                        <SummaryValue text={OnStudy.length} />
                         <SummaryName text="연구중인 기술" />
                         <SummaryLinkBtn>
                             <Plus size={24} />
@@ -103,11 +120,21 @@ const HomePage = () => {
                     </BentoLinkBtn>
                 </div>
                 <div
-                    className="bentoItem light notice"
+                    className="bentoItem dark story"
                     onClick={() => {
                         navigate("/story");
                     }}
                 >
+                    <div id="gallery">
+                        {gallery.map((image, index) => (
+                            <img
+                                key={index}
+                                src={image}
+                                alt={`gallery-${index}`}
+                                className="galleryImage"
+                            />
+                        ))}
+                    </div>
                     <BentoName text="프로젝트 이야기" />
                     <BentoLinkBtn>
                         <Plus size={24} />

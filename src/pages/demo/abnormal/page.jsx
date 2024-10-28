@@ -9,7 +9,7 @@ import { ArrowUpRight, FilePieChart } from "lucide-react";
 import Upload from "@/assets/images/uploadIcon.png";
 // 스타일
 import "./style.css";
-const apiBaseURL = "http://210.94.194.107:50000";
+const apiBaseURL = "http://210.94.194.83:50000";
 
 const AbnromalPage = () => {
     const [file, setFile] = useState(null);

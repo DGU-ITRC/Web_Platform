@@ -3,8 +3,8 @@
 // 컴포넌트
 // 아이콘
 // 데이터
-import { useEffect, useState } from "react";
-import { storyData } from "./data.js";
+import { useState } from "react";
+import { storyData } from "@/data/data.js";
 // 스타일
 import "./style.css";
 
