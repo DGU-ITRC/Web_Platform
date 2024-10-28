@@ -1,3 +1,3 @@
-[!ITRCPLATFORM](./resource/thumb.png)
+![ITRCPLATFORM](./resource/thumb.png)
 
 TBU
