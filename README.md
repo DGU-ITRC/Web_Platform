@@ -1,1 +1,3 @@
-# DGU-ITRC WEB PLATFORM
+[!ITRCPLATFORM](./resource/thumb.png)
+
+TBU
