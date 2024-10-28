@@ -254,6 +254,65 @@ const TechAndServicePage = () => {
                 </div>
                 <div className="section">
                     <SectionHeader
+                        title="자살자해 행동 탐지 모델"
+                        repository="https://github.com/DGU-ITRC/PLASS_Selfharm"
+                        demo="/demo/selfharm"
+                    />
+                    <table>
+                        <tr>
+                            <th>소개</th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        이 모델은 테스트베드에서 구축된
+                                        데이터셋을 기반으로 하여, 자살 및 자해
+                                        행동을 정밀하게 탐지하고 분석하는 데
+                                        중점을 둡니다. 다양한 상황에서의 행동을
+                                        시뮬레이션하여 수집된 데이터는 모델의
+                                        학습에 활용됩니다.
+                                    </li>
+                                    <li>
+                                        모델은 RGB 영상 분석을 통해 이미지에서
+                                        사람의 행동을 탐지합니다. 이 과정에서
+                                        스켈레톤을 추출하고, 해당 스켈레톤
+                                        데이터를 기반으로 PoseC3D 모델을
+                                        활용하여 행동을 추론합니다. 이러한 접근
+                                        방식은 자살 및 자해 행동의 조기 탐지에
+                                        기여하며, 개인의 안전을 확보하는 데
+                                        중요한 역할을 합니다.
+                                    </li>
+                                    <li>
+                                        최종적으로, 모델은 위험한 행동이 발생할
+                                        경우 신속하게 경고할 수 있는 시스템을
+                                        구축할 수 있도록 설계되었습니다. 이
+                                        시스템은 다양한 환경에서 자살 및 자해
+                                        행동을 효과적으로 감지하고, 사회적
+                                        안전망을 강화하는 데 기여할 것입니다.
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>사용 라이브러리 및 패키지</th>
+                            <td>
+                                torch, mmcv, numpy, pandas, opencv-python,
+                                decord, av, tensorboardX, onnx, onnxruntime,
+                                scipy, poseC3D
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>모델 아키텍처</th>
+                            <td>
+                                {/* <ol>
+                                    <li></li>
+                                </ol>
+                                <div className="architectureWrap col2"></div> */}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div className="section">
+                    <SectionHeader
                         title="낙상 탐지 모델"
                         repository="https://github.com/DGU-ITRC/CSDC_Falldown"
                         demo="/demo/falldown"
