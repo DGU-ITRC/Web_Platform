@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
+        <script>
+            if (document.location.protocol == "https:") {
+                document.location.href = document.location.href.replace(
+                    "https:",
+                    "http:"
+                );
+            }
+        </script>
         <!-- Google tag (gtag.js) -->
         <script
             async
