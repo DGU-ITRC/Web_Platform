@@ -1,4 +1,4 @@
-const BaseURL = "http://43.202.202.125";
+const BaseURL = "http://api.itrc.site";
 const AbnormalApi = BaseURL + ":50000";
 const QnaApi = BaseURL + ":50001";
 const DeepscanApi = BaseURL + "50002";

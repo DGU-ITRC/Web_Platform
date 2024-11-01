@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://43.202.202.125:3000/api";
+const API = "http://api.itrc.site/api";
 
 const calcTimeGap = (time) => {
     let result = "";
