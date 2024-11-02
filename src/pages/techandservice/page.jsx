@@ -204,7 +204,10 @@ const TechAndServicePage = () => {
                         </tr>
                         <tr>
                             <th>사용 라이브러리 및 패키지</th>
-                            <td>YOLOv5, Tesseract OCR</td>
+                            <td>
+                                yolov5, pytesseract, numpytransformers,
+                                tensorboard, tensorflow, tensorboardX, numpy,
+                            </td>
                         </tr>
                         <tr>
                             <th>모델 아키텍처</th>
