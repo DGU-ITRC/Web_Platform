@@ -167,9 +167,9 @@ const TechAndServicePage = () => {
                 </div>
                 <div className="section">
                     <SectionHeader
-                        title="딥러닝 기반 사진 검색 모델"
-                        repository="https://github.com"
-                        demo="/"
+                        title="딥러닝 기반 이미지 검색 모델"
+                        repository="https://github.com/DGU-ITRC/PLASS_Deepscan"
+                        demo="/demo/deepscan"
                     />
                     <table>
                         <tr>

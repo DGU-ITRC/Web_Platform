@@ -56,7 +56,7 @@ const ServerPage = () => {
             id: "QnaApi",
         },
         {
-            name: "딥러닝 기반 사진 검색 API",
+            name: "딥러닝 기반 이미지 검색 API",
             id: "DeepscanApi",
         },
         {

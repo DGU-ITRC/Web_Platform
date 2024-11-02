@@ -187,8 +187,7 @@ const HomePage = () => {
                 <div
                     className="bentoItem dark repository"
                     onClick={() => {
-                        // TBD : navigate to github repository
-                        navigate("/");
+                        window.open("https://github.com/DGU-ITRC");
                     }}
                 >
                     <img className="icon" src={RepositoryBg} alt="" srcset="" />
@@ -200,8 +199,7 @@ const HomePage = () => {
                 <div
                     className="bentoItem light model"
                     onClick={() => {
-                        // TBD : navigate to model page
-                        navigate("/");
+                        // window.open("https://github.com/DGU-ITRC");
                     }}
                 >
                     <div
@@ -216,8 +214,7 @@ const HomePage = () => {
                 <div
                     className="bentoItem light api"
                     onClick={() => {
-                        // TBD : navigate to api page
-                        navigate("/");
+                        window.open("https://forms.gle/iiRQ4Fqri7NttybT9");
                     }}
                 >
                     <img className="icon" src={ApiBg} alt="" srcset="" />

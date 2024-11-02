@@ -14,7 +14,9 @@ import TechAndServicePage from "./pages/techandservice/page";
 import NewsPage from "./pages/news/page";
 import CommunicationPage from "./pages/communication/page";
 import ServerPage from "./pages/server/page";
+// 데모 페이지
 import AbnromalPage from "./pages/demo/abnormal/page";
+import DeepscanPage from "./pages/demo/deepscan/page";
 import SelfharmPage from "./pages/demo/selfharm/page";
 import FalldonwPage from "./pages/demo/falldown/page";
 // 스타일
@@ -65,6 +67,14 @@ const router = createBrowserRouter([
             {
                 path: "/demo/abnormal",
                 element: <AbnromalPage />,
+            },
+            {
+                path: "/demo/qna",
+                element: <SelfharmPage />,
+            },
+            {
+                path: "/demo/deepscan",
+                element: <DeepscanPage />,
             },
             {
                 path: "/demo/selfharm",
