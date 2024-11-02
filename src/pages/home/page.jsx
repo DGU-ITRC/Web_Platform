@@ -199,7 +199,7 @@ const HomePage = () => {
                 <div
                     className="bentoItem light model"
                     onClick={() => {
-                        // window.open("https://github.com/DGU-ITRC");
+                        navigate("/techandservice");
                     }}
                 >
                     <div
