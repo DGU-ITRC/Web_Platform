@@ -118,7 +118,7 @@ const TechAndServicePage = () => {
                         <tr>
                             <th>소개</th>
                             <td>
-                                DistilBert를 활용한 RobustOA 모델로 자동
+                                DistilBert를 활용한 RobustQA 모델로 자동
                                 질의응답 시스템, 가상비서 시스템, 검색 엔진
                                 등에서 활용할 수 있으며 긴 문장에서 질문을
                                 통하여 원하는 내용을 손쉽게 확인할 수 있다.
