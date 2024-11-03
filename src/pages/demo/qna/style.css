@@ -1,0 +1,124 @@
+#QnaPage {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: var(--demo-max-width);
+}
+
+#QnaPage > .article {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#QnaPage > .article > .section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#QnaPage > .article > .section > .terms {
+    font-weight: var(--font-weight-reguler);
+    font-size: 0.75rem;
+    color: var(--col-3);
+}
+
+#QnaPage > .article form > .typo1 {
+    font-weight: var(--font-weight-semibold);
+    font-size: 2.5rem;
+    user-select: none;
+}
+
+#QnaPage > .article form .fileWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--col-5);
+}
+
+#QnaPage > .article form .fileWrap:hover {
+    color: var(--col-9);
+}
+
+#QnaPage .inputWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+#QnaPage .inputWrap > textarea {
+    min-height: 28rem;
+    padding: 1rem;
+    border: 1px solid var(--col-2);
+    outline: none;
+    border-radius: var(--radius);
+    background-color: var(--col-0);
+    resize: none;
+    transition: all 0.3s;
+}
+
+#QnaPage .inputWrap > textarea:hover {
+    border: 1px solid var(--col-orange-hover);
+}
+#QnaPage .inputWrap > textarea:focus {
+    border: 1px solid var(--col-orange-hover);
+    background-color: var(--col-orange-2);
+}
+
+#QnaPage .inputWrap > input {
+    padding: 1rem;
+    border: 1px solid var(--col-2);
+    outline: none;
+    border-radius: var(--radius);
+    background-color: var(--col-0);
+    resize: none;
+    transition: all 0.3s;
+}
+
+#QnaPage .inputWrap > input:hover {
+    border: 1px solid var(--col-orange-hover);
+}
+
+#QnaPage .inputWrap > input:focus {
+    border: 1px solid var(--col-orange-hover);
+    background-color: var(--col-orange-2);
+}
+
+#QnaPage .inputWrap > button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 1rem 1.25rem;
+    min-width: 2.625rem;
+    min-height: 2.625rem;
+    background-color: var(--col-orange);
+    border: 1px solid var(--col-orange);
+    border-radius: var(--radius);
+    line-height: 0.875rem;
+    font-size: 1rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--col-0);
+    scale: 1;
+    transition: 0.3s;
+}
+
+#QnaPage .popup {
+    max-width: 24rem;
+}
+
+#QnaPage .answerWrap {
+    padding: 1rem 1.25rem;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--col-9);
+}
+
+#QnaPage .descriptionWrap {
+    padding: 0rem 1.25rem 1rem 1.25rem;
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-reguler);
+    color: var(--col-4);
+}

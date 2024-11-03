@@ -16,6 +16,7 @@ import CommunicationPage from "./pages/communication/page";
 import ServerPage from "./pages/server/page";
 // 데모 페이지
 import AbnromalPage from "./pages/demo/abnormal/page";
+import QnaPage from "./pages/demo/qna/page";
 import DeepscanPage from "./pages/demo/deepscan/page";
 import SelfharmPage from "./pages/demo/selfharm/page";
 import FalldonwPage from "./pages/demo/falldown/page";
@@ -70,7 +71,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/demo/qna",
-                element: <SelfharmPage />,
+                element: <QnaPage />,
             },
             {
                 path: "/demo/deepscan",
