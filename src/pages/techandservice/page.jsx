@@ -111,8 +111,8 @@ const TechAndServicePage = () => {
                 <div className="section">
                     <SectionHeader
                         title="질의응답 모델"
-                        repository="https://github.com"
-                        demo="/"
+                        repository="https://github.com/DGU-ITRC/PLASS_QNA"
+                        demo="/demo/qna"
                     />
                     <table>
                         <tr>
