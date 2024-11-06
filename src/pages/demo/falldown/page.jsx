@@ -18,6 +18,7 @@ const FalldonwPage = () => {
     const [isPopup, setisPopup] = useState(false);
     const [process, setProcess] = useState(0);
     const [progress, setProgress] = useState(-1);
+    const [result, setResult] = useState([]);
     const [log, setLog] = useState([]);
     useEffect(() => {
         console.log(file);
@@ -58,9 +59,18 @@ const FalldonwPage = () => {
         const eventSource = new EventSource(inferenceUrl);
 
         eventSource.onmessage = (event) => {
+            target.scrollTop = 100000;
             const data = JSON.parse(event.data);
             if (data.message) {
                 setLog((prevLog) => [...prevLog, data.message]);
+                if (data.message.startsWith("falldown_frames")) {
+                    const frames = data.message.split(": ")[1];
+                    const parsedFrames = frames
+                        .slice(1, -1)
+                        .split(", ")
+                        .map((frame) => frame.slice(1, -1));
+                    setResult(parsedFrames);
+                }
             } else if (data.progress) {
                 if (data.progress >= 100) {
                     setProgress(-1);
@@ -70,13 +80,12 @@ const FalldonwPage = () => {
             } else {
                 console.log(data);
             }
-            target.scrollTop = target.scrollHeight;
         };
 
         eventSource.onerror = (error) => {
-            target.scrollTop = target.scrollHeight;
             eventSource.close();
             setProcess(2);
+            target.scrollTop = 100000;
         };
     };
 
@@ -124,7 +133,15 @@ const FalldonwPage = () => {
         setisPopup(false);
         setProcess(0);
         setLog([]);
+        setResult([]);
     };
+
+    useEffect(() => {
+        if (process === 2) {
+            const target = document.getElementById("terminal");
+            target.scrollTop = 100000;
+        }
+    }, [process]);
     return (
         <div id="FalldonwPage" className="page">
             <div className="pageInfo">
@@ -258,10 +275,27 @@ const FalldonwPage = () => {
                             {log.map((item, index) => (
                                 <p key={index}>{item}</p>
                             ))}
-                            {progress !== -1 && (
-                                <progress value={progress} max="100"></progress>
-                            )}
+                            <p></p>
+                            <p></p>
+                            <p></p>
                         </div>
+                        {progress !== -1 && (
+                            <progress value={progress} max="100"></progress>
+                        )}
+                        {result.length > 0 && (
+                            <div className="gallaryWrap">
+                                <h1>낙상이 감지된 장면</h1>
+                                <div className="gallary">
+                                    {result.map((image, index) => (
+                                        <img
+                                            src={apiBaseURL + "/" + image}
+                                            alt=""
+                                            key={index}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                     {process === 2 && (
                         <button className="btn" onClick={initDemo}>

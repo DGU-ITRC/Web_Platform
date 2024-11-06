@@ -18,11 +18,12 @@ const SelfharmPage = () => {
     const [isPopup, setisPopup] = useState(false);
     const [process, setProcess] = useState(0);
     const [progress, setProgress] = useState(-1);
+    const [result, setResult] = useState([]);
     const [log, setLog] = useState([]);
     useEffect(() => {
         console.log(file);
-        if (file && file.size > 10 * 1024 * 1024) {
-            alert("10MB 이하의 파일만 지원됩니다.");
+        if (file && file.size > 20 * 1024 * 1024) {
+            alert("20MB 이하의 파일만 지원됩니다.");
             setFile(null);
         }
         if (file && file.type !== "video/mp4") {
@@ -58,9 +59,18 @@ const SelfharmPage = () => {
         const eventSource = new EventSource(inferenceUrl);
 
         eventSource.onmessage = (event) => {
+            target.scrollTop = 100000;
             const data = JSON.parse(event.data);
             if (data.message) {
                 setLog((prevLog) => [...prevLog, data.message]);
+                if (data.message.startsWith("selfharm_frames")) {
+                    const frames = data.message.split(": ")[1];
+                    const parsedFrames = frames
+                        .slice(1, -1)
+                        .split(", ")
+                        .map((frame) => frame.slice(1, -1));
+                    setResult(parsedFrames);
+                }
             } else if (data.progress) {
                 if (data.progress >= 100) {
                     setProgress(-1);
@@ -70,13 +80,12 @@ const SelfharmPage = () => {
             } else {
                 console.log(data);
             }
-            target.scrollTop = target.scrollHeight;
         };
 
         eventSource.onerror = (error) => {
-            target.scrollTop = target.scrollHeight;
             eventSource.close();
             setProcess(2);
+            target.scrollTop = 100000;
         };
     };
 
@@ -124,7 +133,15 @@ const SelfharmPage = () => {
         setisPopup(false);
         setProcess(0);
         setLog([]);
+        setResult([]);
     };
+
+    useEffect(() => {
+        if (process === 2) {
+            const target = document.getElementById("terminal");
+            target.scrollTop = 100000;
+        }
+    }, [process]);
     return (
         <div id="SelfharmPage" className="page">
             <div className="pageInfo">
@@ -219,7 +236,7 @@ const SelfharmPage = () => {
                                             파일을 드래그하세요.
                                         </span>
                                         <span>
-                                            (최대 10MB, mp4 파일만 지원)
+                                            (최대 20MB, mp4 파일만 지원)
                                         </span>
                                     </>
                                 )}
@@ -268,10 +285,27 @@ const SelfharmPage = () => {
                             {log.map((item, index) => (
                                 <p key={index}>{item}</p>
                             ))}
-                            {progress !== -1 && (
-                                <progress value={progress} max="100"></progress>
-                            )}
+                            <p></p>
+                            <p></p>
+                            <p></p>
                         </div>
+                        {progress !== -1 && (
+                            <progress value={progress} max="100"></progress>
+                        )}
+                        {result.length > 0 && (
+                            <div className="gallaryWrap">
+                                <h1>자해가 감지된 장면</h1>
+                                <div className="gallary">
+                                    {result.map((image, index) => (
+                                        <img
+                                            src={apiBaseURL + "/" + image}
+                                            alt=""
+                                            key={index}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                     {process === 2 && (
                         <button className="btn" onClick={initDemo}>
